@@ -1,3 +1,9 @@
+global using api.Models;
+global using api.Services;
+global using api.Services.StudentServec;
+global using api.Dtos.Group;
+global using AutoMapper;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddScoped<IGroupService, GroupService>();
 
 var app = builder.Build();
 
