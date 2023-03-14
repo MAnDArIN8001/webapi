@@ -4,6 +4,7 @@ namespace api {
         {
             CreateMap<Student, GetStudentDto>();
             CreateMap<AddStudentDto, Student>();
+            CreateMap<GetStudentDto, Student>();
         }
     }
 }

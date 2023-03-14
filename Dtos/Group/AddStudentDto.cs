@@ -6,7 +6,5 @@ namespace api.Dtos.Group {
 
         public string firstName {get; set;} = "default";
         public string secondName {get; set;} = "default";
-
-        public Specialization specialization {get; set;}
     }
 }

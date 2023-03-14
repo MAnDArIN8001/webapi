@@ -12,17 +12,35 @@ namespace api.Controllers {
 
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<GetStudentDto>>>> getGroup() {
-            return Ok(await _groupService.getGroup());
+            var response = await _groupService.getGroup();
+
+            if(!response.Success) {
+                return NotFound(response);
+            }
+            
+            return Ok(response);
         }
 
         [HttpGet("studetn/{id}")]
-        public async Task<ActionResult<ServiceResponse<GetStudentDto>>> getStudent(int id) {
+        public async Task<ActionResult<ServiceResponse<GetStudentDto>>> getStudent(string id) {
+            var response = await _groupService.GetStudent(id);
+
+            if(!response.Success) {
+                return NotFound(response);
+            }
+            
             return Ok(await _groupService.GetStudent(id));
         }
 
         [HttpPost("student/add")] 
         public async Task<ActionResult<ServiceResponse<GetStudentDto>>> addStudent(AddStudentDto newStudent) {
-            return Ok(await _groupService.addStudent(newStudent));
+            var response = await _groupService.addStudent(newStudent);
+
+            if(!response.Success) {
+                return NotFound(response);
+            }
+
+            return Ok(response);
         }
 
         [HttpPut("student/set")]
@@ -37,7 +55,7 @@ namespace api.Controllers {
         }
 
         [HttpDelete("student/delete")]
-        public async Task<ActionResult<ServiceResponse<GetStudentDto>>> deleteStudent(int id) {
+        public async Task<ActionResult<ServiceResponse<GetStudentDto>>> deleteStudent(string id) {
             var response = await _groupService.deleteStudent(id);
 
             if(!response.Success){
