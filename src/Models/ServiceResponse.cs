@@ -1,4 +1,4 @@
-namespace api.Models {
+namespace src.Models {
     public class ServiceResponse<T> {
         public T? Data {get; set;}
 

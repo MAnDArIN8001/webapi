@@ -1,8 +1,10 @@
-global using api.Models;
-global using api.Services;
-global using api.Services.StudentServec;
-global using api.Dtos.Group;
+global using src.Models;
+global using src.Services;
+global using src.Services.StudentServec;
+global using src.Dtos.Group;
 global using AutoMapper;
+
+global using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,16 +16,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
-builder.Services.AddScoped<IGroupService, GroupService>();
+builder.Services.AddScoped<IAccountServices, AccountService>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 

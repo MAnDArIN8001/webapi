@@ -1,11 +1,9 @@
-namespace api.Dtos.Group {
-    public class UpdateStudentDto {
+namespace src.Dtos.Group {
+    public class GetAccountDto {
         public string id {get; set;}
-        public int age {get; set;}
-
-        public float avrMark {get; set;}
-
+        
         public string firstName {get; set;} = "default";
         public string secondName {get; set;} = "default";
+        public string mail {get; set;} = "default";
     }
 }
